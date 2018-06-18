@@ -41,9 +41,9 @@ include $(E3_REQUIRE_TOOLS)/driver.makefile
 ##EXCLUDE_ARCHS = linux-ppc64e6500
 
 
-# APP:=calcApp
-# APPDB:=$(APP)/Db
-# APPSRC:=$(APP)/src
+APP:=mebt-fcApp
+APPDB:=$(APP)/Db
+APPSRC:=$(APP)/src
 
 
 # USR_INCLUDES += -I$(where_am_I)$(APPSRC)
@@ -55,7 +55,19 @@ include $(E3_REQUIRE_TOOLS)/driver.makefile
 # USR_CPPFLAGS += -Wno-unused-function
 # USR_CPPFLAGS += -Wno-unused-but-set-variable
 
-# TEMPLATES += $(wildcard $(APPDB)/*.db)
+TEMPLATES += $(APPDB)/FC_MEBT.template
+TEMPLATES += $(APPDB)/FCWindows.template
+TEMPLATES += $(APPDB)/FC_Ecat2_BeamPermit.template
+TEMPLATES += $(APPDB)/FC_Ecat2_HealthStatus.template
+TEMPLATES += $(APPDB)/FC_Ecat2_PSAux.template
+TEMPLATES += $(APPDB)/FC_Ecat2_Switches.template
+TEMPLATES += $(APPDB)/FC_Ecat2_Valve.template
+TEMPLATES += $(APPDB)/FC_MEBT.template
+TEMPLATES += $(APPDB)/FCWindows.template
+TEMPLATES += $(APPDB)/ISEGRepeller_Ecat2_ON.template
+TEMPLATES += $(APPDB)/ISEGRepeller_Ecat2_VMON.template
+TEMPLATES += $(APPDB)/ISEGRepeller_Ecat2_VSET.template
+
 
 # DBDINC_SRCS += $(APPSRC)/swaitRecord.c
 # DBDINC_SRCS += $(APPSRC)/sseqRecord.c
@@ -73,7 +85,8 @@ include $(E3_REQUIRE_TOOLS)/driver.makefile
 # HEADERS += $(DBDINC_HDRS)
 
 
-# SOURCES += $(APPSRC)/sCalcPostfix.c
+SOURCES += $(APPSRC)/FC_source.c
+
 # SOURCES += $(APPSRC)/sCalcPerform.c
 # SOURCES += $(APPSRC)/aCalcPostfix.c
 # SOURCES += $(APPSRC)/aCalcPerform.c
@@ -91,7 +104,7 @@ include $(E3_REQUIRE_TOOLS)/driver.makefile
 # # DBDINC_SRCS should be last of the series of SOURCES
 # SOURCES += $(DBDINC_SRCS)
 
-# DBDS += $(APPSRC)/calcSupport_LOCAL.dbd
+DBDS += $(APPSRC)/FC_source.dbd
 # DBDS += $(APPSRC)/calcSupport_withSNCSEQ.dbd
 # DBDS += $(APPSRC)/calcSupport_withSSCAN.dbd
 
